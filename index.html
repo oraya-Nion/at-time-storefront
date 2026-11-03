@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111b">
+  <meta name="description" content="AT TIME — Seiko มือสอง เลือกชมเรือนที่ยังพร้อมขายและสอบถามรายละเอียดผ่าน LINE">
+  <title>AT TIME | Seiko มือสองที่ยังมีสินค้า</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f7f5ef;
+      --muted: #b9bdc2;
+      --night: #07111c;
+      --panel: #0d1925;
+      --panel-2: #111f2c;
+      --gold: #d7b36c;
+      --gold-bright: #f1d393;
+      --line: rgba(215,179,108,.24);
+      --green: #14b85a;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Noto Sans Thai", "Leelawadee UI", Tahoma, Arial, sans-serif;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--night); color: var(--ink); font-family: var(--sans); line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .topnote { padding: 10px 18px; text-align: center; background: #332813; color: #ffe5ad; font-size: 12px; letter-spacing: .02em; }
+    .topnote strong { color: #fff3d6; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(7,17,28,.91); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-mark { display: grid; place-items: center; width: 42px; aspect-ratio: 1; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-bright); font: 700 12px var(--serif); letter-spacing: -.04em; }
+    .brand-name { font-size: 15px; font-weight: 800; letter-spacing: .18em; line-height: 1.1; }
+    .brand-sub { display: block; color: var(--muted); font-size: 9px; letter-spacing: .16em; margin-top: 5px; }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-size: 13px; color: #d6d8dc; }
+    .nav-links a:hover { color: var(--gold-bright); }
+    .btn { min-height: 48px; display: inline-flex; justify-content: center; align-items: center; gap: 10px; padding: 0 22px; border-radius: 999px; border: 1px solid transparent; font-weight: 700; font-size: 14px; transition: transform .2s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: linear-gradient(135deg, #f1d393, #c69d4f); color: #111721; box-shadow: 0 8px 28px rgba(215,179,108,.18); }
+    .btn-line { color: #fff; background: var(--green); }
+    .btn-outline { border-color: rgba(255,255,255,.28); color: #f3f1eb; background: rgba(255,255,255,.03); }
+    .hero { position: relative; overflow: hidden; background: radial-gradient(ellipse at 72% 42%, rgba(43,72,91,.55), transparent 47%), linear-gradient(115deg,#07111c 6%,#101b26 55%,#101820 100%); }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .2; background-image: linear-gradient(90deg,transparent 49.8%,rgba(216,180,108,.13) 50%,transparent 50.2%), linear-gradient(0deg,transparent 49.8%,rgba(216,180,108,.07) 50%,transparent 50.2%); background-size: 72px 72px; mask-image: linear-gradient(90deg,transparent,black); }
+    .hero-grid { position: relative; min-height: 610px; display: grid; grid-template-columns: 1fr .94fr; align-items: center; gap: 34px; padding-block: 56px 66px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--gold-bright); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--gold); }
+    h1,h2,h3,p { margin-top: 0; }
+    h1 { max-width: 650px; margin: 20px 0 22px; font-size: clamp(38px,5.3vw,68px); line-height: 1.14; letter-spacing: -.04em; font-weight: 650; }
+    h1 em { color: var(--gold-bright); font-family: var(--serif); font-weight: 500; font-style: normal; letter-spacing: -.02em; }
+    .hero-copy { max-width: 535px; color: #c6cbd0; font-size: 16px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-meta { margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap; color: #c4c8cb; font-size: 12px; }
+    .hero-meta span { display: inline-flex; gap: 7px; align-items: center; }
+    .check { color: var(--gold); font-weight: 900; }
+    .hero-visual { position: relative; justify-self: end; width: min(100%, 440px); padding: 11px; border: 1px solid rgba(215,179,108,.48); border-radius: 3px; background: linear-gradient(145deg,#e9e6de,#d4d1c9); box-shadow: 0 32px 90px rgba(0,0,0,.35); transform: none; }
+    .hero-visual::before { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(255,255,255,.12); pointer-events: none; z-index: 2; }
+    .hero-visual img { height: auto; aspect-ratio: 3 / 4; object-fit: contain; object-position: center; filter: none; background: #e9e6de; }
+    .photo-caption { display: flex; justify-content: space-between; gap: 12px; padding: 12px 5px 1px; color: #b6bdc3; font-size: 10px; letter-spacing: .08em; }
+    .photo-caption strong { color: var(--gold-bright); font-weight: 600; }
+    .section { padding: 100px 0; }
+    .section-kicker { display: flex; align-items: center; gap: 12px; color: var(--gold); font-size: 11px; letter-spacing: .18em; font-weight: 800; text-transform: uppercase; }
+    .section-kicker::after { content: ""; height: 1px; width: 55px; background: var(--line); }
+    h2 { margin: 14px 0 16px; font-size: clamp(30px,4vw,46px); line-height: 1.25; letter-spacing: -.035em; font-weight: 650; }
+    .section-intro { max-width: 650px; color: var(--muted); font-size: 15px; }
+    .needs { background: #0b1722; }
+    .needs-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+    .needs-list { display: grid; gap: 14px; }
+    .need { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.075); border-radius: 14px; }
+    .need-icon { flex: 0 0 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; color: var(--gold-bright); border: 1px solid var(--line); font-size: 16px; }
+    .need p { margin: 0; color: #d6d8da; font-size: 14px; }
+    .need strong { color: #fff; display: block; margin-bottom: 2px; }
+    .inventory { background: linear-gradient(180deg,#101d29,#09131e); }
+    .inventory-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
+    .inventory-head .section-intro { margin-bottom: 0; }
+    .preview-badge { border: 1px solid rgba(241,211,147,.38); background: rgba(215,179,108,.08); color: #f2dcae; padding: 10px 13px; border-radius: 10px; font-size: 11px; max-width: 300px; }
+    .product-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .product { overflow: hidden; border-radius: 16px; background: #111f2c; border: 1px solid rgba(255,255,255,.09); transition: transform .25s,border-color .25s; }
+    .product:hover { transform: translateY(-5px); border-color: rgba(215,179,108,.5); }
+    .product-photo { position: relative; overflow: hidden; background: #d8d5cd; }
+    .product-photo img { height: auto; aspect-ratio: 3 / 4; object-fit: contain; background: #e7e4dc; transition: filter .35s; }
+    .product:hover .product-photo img { filter: brightness(1.035); }
+    .status { position: absolute; top: 14px; left: 14px; padding: 6px 10px; border-radius: 999px; background: rgba(9,17,25,.88); color: #ffe7b6; font-size: 10px; border: 1px solid rgba(241,211,147,.35); }
+    .product-info { padding: 18px 18px 20px; }
+    .product-type { color: var(--gold); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+    .product h3 { margin: 5px 0 6px; font-size: 20px; }
+    .product-info p { color: #aeb7bf; margin-bottom: 15px; font-size: 12px; }
+    .product-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,.09); padding-top: 14px; gap: 10px; }
+    .price-later { font-size: 12px; color: #d7dadd; }
+    .text-link { color: var(--gold-bright); font-size: 12px; font-weight: 700; }
+    .detail-note { margin-top: 18px; padding: 13px 16px; background: #211d13; border-left: 2px solid var(--gold); color: #e8d5ab; font-size: 11px; border-radius: 0 8px 8px 0; }
+    .assumption { color: #f1d393; background: rgba(215,179,108,.1); border: 1px dashed rgba(215,179,108,.42); border-radius: 5px; padding: 1px 5px; font-size: .92em; }
+    .assurances { background: #080f17; }
+    .assurance-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; margin-top: 36px; background: rgba(215,179,108,.18); border: 1px solid rgba(215,179,108,.18); }
+    .assurance { min-height: 184px; padding: 26px 23px; background: #0b1520; }
+    .assurance .symbol { display: block; color: var(--gold); font-size: 24px; margin-bottom: 18px; }
+    .assurance h3 { font-size: 15px; margin-bottom: 7px; }
+    .assurance p { margin: 0; color: #aeb7bf; font-size: 12px; }
+    .reviews { background: #101b26; }
+    .review-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 32px; }
+    .review-shot { margin: 0; overflow: hidden; padding: 12px; background: #0b1520; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
+    .review-shot img { width: 100%; max-height: 720px; object-fit: contain; object-position: top center; border-radius: 8px; background: #080b11; }
+    .review-shot figcaption { color: #c9b887; font-size: 11px; padding: 12px 4px 2px; }
+    blockquote { margin: 0; padding: 27px; background: #0b1520; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
+    blockquote p { color: #f6f2e8; font-size: 19px; margin-bottom: 16px; }
+    blockquote footer { color: #9ca7b0; font-size: 11px; }
+    .review-caveat { color: #c9b887; font-size: 11px; margin-top: 16px; }
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 36px; counter-reset: step; }
+    .step { position: relative; padding: 24px; background: #101d29; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; counter-increment: step; }
+    .step::before { content: "0" counter(step); display: block; color: var(--gold); font: 22px var(--serif); margin-bottom: 22px; }
+    .step h3 { font-size: 15px; margin-bottom: 7px; }
+    .step p { color: #aeb7bf; font-size: 12px; margin: 0; }
+    .faq { background: #0b1722; }
+    .faq-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; }
+    .faq-list { border-top: 1px solid rgba(255,255,255,.12); }
+    details { border-bottom: 1px solid rgba(255,255,255,.12); }
+    summary { cursor: pointer; padding: 19px 4px; list-style: none; display: flex; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 650; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--gold); font-size: 20px; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { color: #b7c0c7; font-size: 13px; padding: 0 24px 18px 4px; margin: 0; }
+    .final-cta { padding: 84px 0 95px; text-align: center; position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 100%,rgba(161,123,54,.19),transparent 55%),#09121c; border-top: 1px solid var(--line); }
+    .final-cta .section-kicker { justify-content: center; }
+    .final-cta .section-kicker::before { content: ""; width: 55px; height: 1px; background: var(--line); }
+    .final-cta h2 { max-width: 740px; margin: 17px auto 13px; }
+    .final-cta p { color: var(--muted); max-width: 560px; margin: 0 auto 25px; }
+    .contact-links { margin-top: 22px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; color: #aeb7bf; font-size: 12px; }
+    .contact-links a:hover { color: var(--gold-bright); }
+    .footer { padding: 25px 0; border-top: 1px solid rgba(255,255,255,.08); color: #89939c; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .floating-cta { position: fixed; z-index: 30; right: 22px; bottom: 20px; box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+    .mobile-menu { display: none; }
+    /* Design Lab options: all selectors can be mixed independently. */
+    body[data-font="editorial"] { --sans: "Angsana New", Angsana, "Cordia New", serif; }
+    body[data-font="friendly"] { --sans: "Cordia New", Cordia, Tahoma, sans-serif; }
+    body[data-font="friendly"] { letter-spacing: .005em; }
+    body[data-font="editorial"] h1, body[data-font="editorial"] h2 { letter-spacing: 0; }
+    body[data-hero="center"] .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    body[data-hero="center"] .hero-grid > div:first-child { display: flex; flex-direction: column; align-items: center; }
+    body[data-hero="center"] .hero-copy { margin-inline: auto; }
+    body[data-hero="center"] .hero-meta, body[data-hero="center"] .hero-actions { justify-content: center; }
+    body[data-hero="center"] .hero-visual { justify-self: center; width: min(80%, 680px); transform: none; }
+    body[data-hero="center"] .hero-visual img { height: auto; aspect-ratio: 3 / 4; }
+    body[data-hero="watch-first"] .hero-grid { grid-template-columns: minmax(0,1.08fr) minmax(300px,.92fr); }
+    body[data-hero="watch-first"] .hero-visual { order: -1; justify-self: start; transform: rotate(-2deg); }
+    body[data-cta="outline"] .btn[data-primary-cta] { color: var(--gold-bright); background: transparent; border: 1px solid var(--gold); border-radius: 5px; box-shadow: none; }
+    body[data-cta="chat"] .btn[data-primary-cta] { color: #fff; background: #13a85b; border: 1px solid #13a85b; border-radius: 13px; box-shadow: 0 8px 25px rgba(19,168,91,.22); }
+    body[data-cta="chat"] .floating-cta { border-radius: 999px; }
+    body[data-palette="sage"] { --ink:#17251e; --muted:#59675f; --night:#f1f0e8; --panel:#fffef9; --panel-2:#e8e9df; --gold:#36705a; --gold-bright:#194d39; --line:rgba(54,112,90,.28); --green:#19794d; }
+    body[data-palette="sage"] .topnote { background:#dbe6d9; color:#294538; }
+    body[data-palette="sage"] .topnote strong { color:#173c2c; }
+    body[data-palette="sage"] header { background:rgba(247,247,240,.92); border-color:rgba(23,37,30,.12); }
+    body[data-palette="sage"] .nav-links { color:#33463c; }
+    body[data-palette="sage"] .brand-sub, body[data-palette="sage"] .hero-copy, body[data-palette="sage"] .hero-meta,
+    body[data-palette="sage"] .photo-caption, body[data-palette="sage"] .section-intro { color:#59675f; }
+    body[data-palette="sage"] .hero { background:radial-gradient(ellipse at 72% 42%,rgba(119,157,131,.24),transparent 47%),linear-gradient(115deg,#f6f4ec,#e6ede5); }
+    body[data-palette="sage"] .hero::before { opacity:.08; }
+    body[data-palette="sage"] .needs, body[data-palette="sage"] .reviews, body[data-palette="sage"] .faq { background:#e8e9df; }
+    body[data-palette="sage"] .inventory, body[data-palette="sage"] .assurances, body[data-palette="sage"] .final-cta { background:#f4f3ec; }
+    body[data-palette="sage"] .need, body[data-palette="sage"] .product, body[data-palette="sage"] .assurance,
+    body[data-palette="sage"] blockquote, body[data-palette="sage"] .step { background:#fffef9; border-color:rgba(23,37,30,.12); }
+    body[data-palette="sage"] .need p, body[data-palette="sage"] .need strong, body[data-palette="sage"] .product h3,
+    body[data-palette="sage"] .assurance h3, body[data-palette="sage"] .step h3, body[data-palette="sage"] blockquote p,
+    body[data-palette="sage"] .faq summary { color:#17251e; }
+    body[data-palette="sage"] .need p, body[data-palette="sage"] .product-info p, body[data-palette="sage"] .assurance p,
+    body[data-palette="sage"] .step p, body[data-palette="sage"] blockquote footer, body[data-palette="sage"] details p,
+    body[data-palette="sage"] .price-later { color:#59675f; }
+    body[data-palette="sage"] .detail-note { color:#294538; background:#e1eadf; }
+    body[data-palette="sage"] .preview-badge { color:#294538; background:#e7eee5; }
+    body[data-palette="sage"] .faq-list, body[data-palette="sage"] details { border-color:rgba(23,37,30,.15); }
+    body[data-palette="sage"] .final-cta p, body[data-palette="sage"] .contact-links { color:#59675f; }
+    body[data-palette="sage"] .footer { color:#59675f; border-color:rgba(23,37,30,.12); }
+    body[data-palette="plum"] { --ink:#f5edf0; --muted:#c7b8bf; --night:#170f14; --panel:#241820; --panel-2:#30202a; --gold:#d58a9b; --gold-bright:#f0b3c0; --line:rgba(213,138,155,.28); --green:#168f59; }
+    body[data-palette="plum"] .topnote { background:#39232d; color:#f1c5d0; }
+    body[data-palette="plum"] .topnote strong { color:#ffe4eb; }
+    body[data-palette="plum"] header { background:rgba(23,15,20,.92); }
+    body[data-palette="plum"] .hero { background:radial-gradient(ellipse at 72% 42%,rgba(111,48,72,.55),transparent 47%),linear-gradient(115deg,#170f14,#281620 58%,#1e1319); }
+    body[data-palette="plum"] .needs, body[data-palette="plum"] .reviews, body[data-palette="plum"] .faq { background:#1e1319; }
+    body[data-palette="plum"] .inventory, body[data-palette="plum"] .final-cta { background:linear-gradient(180deg,#281820,#170f14); }
+    body[data-palette="plum"] .assurances { background:#170f14; }
+    body[data-palette="plum"] .detail-note { color:#f1c5d0; background:#33202a; }
+    .design-lab { position:fixed; z-index:40; left:18px; bottom:18px; width:min(310px,calc(100vw - 32px)); max-height:min(72vh,650px); overflow:auto; background:rgba(6,13,20,.97); color:#f7f5ef; border:1px solid rgba(215,179,108,.52); border-radius:15px; box-shadow:0 18px 60px rgba(0,0,0,.48); padding:16px; backdrop-filter:blur(14px); }
+    .lab-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.12); margin-bottom:12px; }
+    .lab-title { font-size:13px; font-weight:800; letter-spacing:.04em; }
+    .lab-subtitle { display:block; color:#aeb7bf; font-size:10px; margin-top:3px; }
+    .lab-hide { flex:0 0 auto; background:transparent; color:#f1d393; border:1px solid rgba(241,211,147,.48); padding:5px 9px; border-radius:7px; font:inherit; font-size:10px; cursor:pointer; }
+    .lab-field { display:block; margin:10px 0; }
+    .lab-field span { display:block; font-size:10px; color:#d4d5d6; margin-bottom:5px; }
+    .lab-field select { width:100%; height:37px; background:#13212c; color:#f7f5ef; border:1px solid rgba(255,255,255,.18); border-radius:8px; padding:0 9px; font:inherit; font-size:11px; }
+    .lab-foot { padding-top:10px; margin-top:10px; border-top:1px solid rgba(255,255,255,.12); color:#c5ad76; font-size:9px; }
+    .lab-show { position:fixed; z-index:40; left:18px; bottom:18px; border:1px solid rgba(215,179,108,.65); background:#08111b; color:#f1d393; border-radius:999px; padding:11px 15px; font:700 11px var(--sans); box-shadow:0 12px 35px rgba(0,0,0,.4); cursor:pointer; }
+    .lab-show[hidden] { display:none; }
+    .design-lab[hidden] { display:none; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 16px; }
+      .nav-links a:not(.btn) { display: none; }
+      .hero-grid { min-height: unset; grid-template-columns: 1fr .85fr; }
+      .hero-visual img { height: auto; aspect-ratio: 3 / 4; }
+      .needs-grid,.faq-grid { gap: 36px; }
+      .assurance-grid { grid-template-columns: repeat(2,1fr); }
+      body[data-hero="center"] .hero-visual { width: min(90%, 640px); }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 32px, var(--max)); }
+      .topnote { font-size: 10px; padding: 8px 12px; }
+      .nav { height: 64px; }
+      .nav-links { display: none; }
+      .nav > .btn { min-height: 40px; padding-inline: 15px; font-size: 12px; }
+      .mobile-menu { display: inline-flex; }
+      .hero-grid { grid-template-columns: 1fr; padding-block: 45px 40px; gap: 30px; }
+      h1 { font-size: clamp(38px,12vw,54px); margin-top: 17px; }
+      .hero-copy { font-size: 14px; }
+      .hero-visual { width: 90%; justify-self: center; }
+      .hero-visual img { height: auto; aspect-ratio: 3 / 4; }
+      .section { padding: 68px 0; }
+      .needs-grid,.faq-grid { grid-template-columns: 1fr; gap: 26px; }
+      .inventory-head { display: block; }
+      .preview-badge { margin-top: 18px; max-width: none; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-photo img { height: auto; aspect-ratio: 3 / 4; }
+      .assurance-grid { grid-template-columns: 1fr 1fr; }
+      .assurance { min-height: 170px; padding: 20px 16px; }
+      .review-grid,.steps { grid-template-columns: 1fr; }
+      .final-cta { padding: 70px 0 80px; }
+      .footer-inner { display: block; }
+      .floating-cta { right: 12px; bottom: 12px; min-height: 45px; padding-inline: 16px; font-size: 12px; }
+      .design-lab { left:10px; bottom:68px; width:min(300px,calc(100vw - 20px)); max-height:60vh; padding:13px; }
+      .lab-show { left:10px; bottom:12px; }
+      body[data-hero="watch-first"] .hero-grid { grid-template-columns:1fr; }
+      body[data-hero="watch-first"] .hero-visual { order:0; justify-self:center; width:90%; }
+      body[data-hero="center"] .hero-visual { width:90%; }
+      body[data-hero="center"] .hero-visual img { height:auto; aspect-ratio:3 / 4; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body data-font="modern" data-hero="split" data-cta="gold" data-palette="black-gold">
+  <div class="topnote"><strong>หน้า Preview สำหรับตรวจดูเท่านั้น</strong> · สถานะสินค้า ภาพรีวิว และข้อมูลบางส่วนยังต้องยืนยันก่อนเผยแพร่</div>
+  <header>
+    <nav class="nav wrap" aria-label="เมนูหลัก">
+      <a class="brand" href="#top" aria-label="AT TIME หน้าแรก">
+        <span class="brand-mark">AT<br>TIME</span>
+        <span><span class="brand-name">AT TIME</span><span class="brand-sub">SEIKO PRE-OWNED</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#inventory">นาฬิกาที่มี</a>
+        <a href="#service">บริการ</a>
+        <a href="#reviews">เสียงจากลูกค้า</a>
+        <a class="btn btn-gold" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ทัก LINE ↗</a>
+      </div>
+      <a class="btn btn-gold mobile-menu" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ทัก LINE ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid wrap">
+        <div>
+          <span class="eyebrow">AT TIME · SEIKO PRE-OWNED</span>
+          <h1>Seiko มือสอง<br><em>เรือนที่ใช่ รอคุณอยู่</em></h1>
+          <p class="hero-copy">เลือกชม Seiko มือสองจากรายการที่ร้านยืนยันว่าพร้อมขาย ดูรายละเอียดก่อนตัดสินใจ หรือทักมาถามเรือนที่สนใจได้โดยตรง</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#inventory">เลือกดูนาฬิกา <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-outline" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">เช็กสต็อกทาง LINE ↗</a>
+          </div>
+          <div class="hero-meta">
+            <span><b class="check">✓</b> รับประกันร้าน 6 เดือน</span>
+            <span><b class="check">✓</b> จัดส่งทั่วไทย</span>
+            <span><b class="check">✓</b> ขอรายละเอียดเพิ่มได้</span>
+          </div>
+          <div class="detail-note">ข้อมูลจากไฟล์โครงการ: สินค้าหมุนเวียน · รูปและรุ่นด้านล่างเป็นตัวอย่างจากคลังภาพ ไม่ใช่การยืนยันว่าคงเหลือในขณะนี้</div>
+        </div>
+        <figure class="hero-visual">
+          <img src="watch-cover.jpg" alt="ภาพใกล้หน้าปัด Seiko Prospex PADI จากคลังภาพของ AT TIME" fetchpriority="high">
+          <figcaption class="photo-caption"><span>ภาพสินค้าจริงจากคลัง Project Seiko</span><strong>สถานะปัจจุบัน: รอยืนยัน</strong></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section needs">
+      <div class="needs-grid wrap">
+        <div>
+          <span class="section-kicker">เลือกได้อย่างสบายใจ</span>
+          <h2>อยากเห็นรายละเอียด<br>ก่อนตัดสินใจซื้อ?</h2>
+          <p class="section-intro">นาฬิกามือสองแต่ละเรือนมีสภาพและรายละเอียดต่างกัน ดูรายการที่ยังว่าง แล้วสอบถามข้อมูลเพิ่มเติมกับ AT TIME ได้ก่อนตัดสินใจ</p>
+          <a class="btn btn-line" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ถามรายละเอียดทาง LINE ↗</a>
+        </div>
+        <div class="needs-list">
+          <div class="need"><span class="need-icon">⌕</span><p><strong>เช็กสถานะเรือนที่สนใจ</strong>สอบถามว่ารุ่นนั้นยังพร้อมขายหรือมีผู้จองแล้ว</p></div>
+          <div class="need"><span class="need-icon">◉</span><p><strong>ดูภาพและรายละเอียดเพิ่มเติม</strong>[สมมติ — รอยืนยัน: ร้านสามารถส่งภาพหรือวิดีโอเพิ่มได้ตามคำขอ]</p></div>
+          <div class="need"><span class="need-icon">↗</span><p><strong>เลือกวิธีรับสินค้า</strong>พัสดุ · มารับเอง · บริการส่งถึงที่ [สมมติ — รอยืนยัน: พื้นที่และเงื่อนไขบริการ]</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section inventory" id="inventory">
+      <div class="wrap">
+        <div class="inventory-head">
+          <div>
+            <span class="section-kicker">คลังสินค้าปัจจุบัน</span>
+            <h2>Seiko ที่พร้อมขาย</h2>
+            <p class="section-intro">แสดงเฉพาะรายการที่คลังสินค้ายืนยันว่าพร้อมขาย · ทัก LINE เพื่อเช็กสถานะและสอบถามราคา</p>
+          </div>
+          <div class="preview-badge" id="stock-status" role="status" aria-live="polite">สถานะคลังสินค้า: <strong>กำลังโหลดรายการล่าสุด…</strong></div>
+        </div>
+        <div class="product-grid" id="stock-grid" aria-live="polite"></div>
+        <p class="detail-note" id="stock-note">รายการพร้อมขายและราคาจะแสดงจากข้อมูลสต็อกที่เชื่อมไว้ · สอบถามรายละเอียดทาง LINE</p>
+      </div>
+    </section>
+
+    <section class="section assurances" id="service">
+      <div class="wrap">
+        <span class="section-kicker">บริการจาก AT TIME</span>
+        <h2>ซื้อ ขาย หรือรับเทิร์น Seiko</h2>
+        <p class="section-intro">ติดต่อ AT TIME เพื่อสอบถามสินค้าพร้อมขาย รายละเอียดการซื้อขาย หรือบริการรับเทิร์น</p>
+        <div class="assurance-grid">
+          <article class="assurance"><span class="symbol">01</span><h3>รับประกันร้าน 6 เดือน</h3><p>[สมมติ — รอยืนยัน: เงื่อนไขและข้อยกเว้นการรับประกัน]</p></article>
+          <article class="assurance"><span class="symbol">02</span><h3>แจ้งรายละเอียดตามสภาพ</h3><p>ข้อมูลโครงการระบุแนวทางแจ้งสภาพจริง และให้ลูกค้าสอบถามเพิ่มเติมได้</p></article>
+          <article class="assurance"><span class="symbol">03</span><h3>เลือกวิธีรับสินค้า</h3><p>พัสดุ · มารับเอง · ส่งถึงที่ [สมมติ — รอยืนยัน: พื้นที่ ค่าส่ง และวิธีนัดรับ]</p></article>
+          <article class="assurance"><span class="symbol">04</span><h3>สอบถามผ่าน LINE</h3><p>รับข้อมูลการชำระเงินจาก LINE OA ของ AT TIME หลังยืนยันรายการ</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews" id="reviews">
+      <div class="wrap">
+        <span class="section-kicker">รีวิวจากลูกค้าจริง</span>
+        <h2>เสียงตอบรับหลังได้รับนาฬิกา</h2>
+        <p class="section-intro">ภาพแคปข้อความรีวิวจากโฟลเดอร์รีวิวลูกค้าของ AT TIME แสดงเป็นภาพต้นฉบับ ไม่ถอดความหรือแต่งข้อความเพิ่ม</p>
+        <div class="review-grid">
+          <figure class="review-shot"><img src="review-1.jpg" alt="ภาพแคปบทสนทนาลูกค้าจริง ชื่นชมว่านาฬิกาตัวจริงสวยงามและถูกใจ" loading="lazy"><figcaption>ภาพรีวิวจากไฟล์ของร้าน · บทสนทนาหลังได้รับนาฬิกา</figcaption></figure>
+          <figure class="review-shot"><img src="review-2.jpg" alt="ภาพแคปบทสนทนาลูกค้าจริง แจ้งว่าได้รับนาฬิกาแล้วและชื่นชมว่าสวยมาก" loading="lazy"><figcaption>ภาพรีวิวจากไฟล์ของร้าน · ลูกค้าแจ้งว่าได้รับสินค้าแล้ว</figcaption></figure>
+        </div>
+        <p class="review-caveat">หมายเหตุสำหรับตรวจร่าง: ภาพทั้งสองเป็นบทสนทนาแชต ไม่ใช่โพสต์รีวิวสาธารณะบน Facebook · ก่อนเผยแพร่สู่สาธารณะ ควรตรวจการอนุญาตใช้ภาพและปกปิดรูปโปรไฟล์/ข้อมูลระบุตัวบุคคลของลูกค้า</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <span class="section-kicker">เริ่มต้นง่าย ๆ</span>
+        <h2>สนใจเรือนไหน ทักมาคุยได้เลย</h2>
+        <div class="steps">
+          <article class="step"><h3>เลือกรุ่นที่สนใจ</h3><p>ส่งรหัสรุ่นหรือภาพหน้าจอของนาฬิกาที่ต้องการถาม</p></article>
+          <article class="step"><h3>เช็กสต็อกและรายละเอียด</h3><p>ให้ AT TIME ยืนยันสถานะ ราคา และข้อมูลล่าสุดก่อนตัดสินใจ</p></article>
+          <article class="step"><h3>เลือกรับสินค้าและชำระเงิน</h3><p>รับรายละเอียดวิธีชำระและจัดส่งผ่านช่องทางทางการของร้าน</p></article>
+        </div>
+        <p class="detail-note">[สมมติ — รอยืนยัน: ขั้นตอนและช่องทางชำระเงินในหน้านี้สอดคล้องกับวิธีปฏิบัติล่าสุดของร้าน]</p>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="faq-grid wrap">
+        <div><span class="section-kicker">คำถามที่พบบ่อย</span><h2>ก่อนเลือกซื้อ</h2><p class="section-intro">ยังไม่แน่ใจเรื่องไหน ทัก LINE เพื่อสอบถามข้อมูลล่าสุดจากร้าน</p><a class="btn btn-outline" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ถาม AT TIME ↗</a></div>
+        <div class="faq-list">
+          <details><summary>รายการที่เห็นยังมีสินค้าอยู่ไหม?</summary><p>ภาพในตัวอย่างนี้มาจากไฟล์เดิมของ Project Seiko ยังไม่ใช่การยืนยันสต็อกปัจจุบัน กรุณาทัก LINE เพื่อเช็กเรือนที่ยังพร้อมขาย</p></details>
+          <details><summary>นาฬิกามีรับประกันไหม?</summary><p>AT TIME รับประกันจากร้าน 6 เดือน <span class="assumption">[สมมติ — รอยืนยัน: เงื่อนไขและข้อยกเว้น]</span></p></details>
+          <details><summary>ขอภาพหรือข้อมูลเพิ่มได้ไหม?</summary><p>สอบถามรายละเอียดเรือนที่สนใจผ่าน LINE ได้ <span class="assumption">[สมมติ — รอยืนยัน: ร้านสามารถส่งภาพ/วิดีโอเพิ่มเติมได้ทุกเรือน]</span></p></details>
+          <details><summary>รับสินค้าได้อย่างไร?</summary><p>มีข้อมูลจากเจ้าของว่ารองรับพัสดุ มารับเอง และบริการส่งถึงที่ <span class="assumption">[สมมติ — รอยืนยัน: พื้นที่ ค่าส่ง และการนัดหมาย]</span></p></details>
+          <details><summary>ชำระเงินอย่างไร?</summary><p>ขอรายละเอียดชำระเงินจาก LINE OA ของ AT TIME หลังยืนยันรายการแล้ว ไม่ใช้ข้อมูลบัญชีจากโพสต์เก่า</p></details>
+          <details><summary>มี Seiko รุ่นอื่นที่ไม่ได้อยู่ในรายการไหม?</summary><p>ส่งรหัสรุ่นหรือรูปที่กำลังหาให้ร้านตรวจสอบได้ <span class="assumption">[สมมติ — รอยืนยัน: ร้านรับตรวจสอบหรือแจ้งเมื่อมีรุ่นที่ต้องการเข้าร้าน]</span></p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="wrap">
+        <span class="section-kicker">AT TIME · SEIKO PRE-OWNED</span>
+        <h2>เจอเรือนที่ถูกใจ?<br><span style="color:var(--gold-bright)">ทักมาเช็กสถานะได้เลย</span></h2>
+        <p>ถามข้อมูล Seiko มือสองที่สนใจ เช็กสต็อกและราคา หรือสอบถามวิธีรับสินค้าได้ทาง LINE OA</p>
+        <a class="btn btn-line" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ทัก LINE เช็กเรือนที่ยังว่าง ↗</a>
+        <div class="contact-links"><a href="tel:+66972973584">โทร 097-297-3584</a><a href="https://www.facebook.com/share/1JBkf23KFo/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a><a href="https://www.tiktok.com/@mikelat?_r=1&_t=ZS-9B2d63hebcm" target="_blank" rel="noopener">TikTok @mikelat</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="footer-inner wrap"><span>AT TIME · Seiko มือสอง</span><span>หน้า Preview ภายใน · มีข้อมูลและสต็อกที่รอยืนยันก่อนเผยแพร่</span></div></footer>
+  <a class="btn btn-line floating-cta" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener" aria-label="ทัก LINE AT TIME">ทัก LINE ↗</a>
+  <aside class="design-lab" id="design-lab" aria-label="แผงทดลองดีไซน์">
+    <div class="lab-head">
+      <div><span class="lab-title">✦ DESIGN LAB</span><span class="lab-subtitle">เครื่องมือทดลอง · ไม่ใช่เนื้อหาสำหรับลูกค้า</span></div>
+      <button class="lab-hide" id="hide-lab" type="button" aria-expanded="true" aria-controls="design-lab">ซ่อนแผง</button>
+    </div>
+    <label class="lab-field"><span>1 · Font</span><select id="font-choice" aria-label="เลือกแนวฟอนต์">
+      <option value="modern">01 — Clean Modern · Tahoma</option>
+      <option value="editorial">02 — Thai Editorial · Angsana New</option>
+      <option value="friendly">03 — Friendly Light · Cordia New</option>
+    </select></label>
+    <label class="lab-field"><span>2 · Hero section layout</span><select id="hero-choice" aria-label="เลือกเลย์เอาต์ Hero">
+      <option value="split">01 — Split Classic · ข้อความคู่ภาพ</option>
+      <option value="center">02 — Centered Showcase · กลางหน้า</option>
+      <option value="watch-first">03 — Watch First · ภาพนำข้อความ</option>
+    </select></label>
+    <label class="lab-field"><span>3 · CTA style + copy</span><select id="cta-choice" aria-label="เลือกรูปแบบปุ่ม CTA">
+      <option value="gold">01 — Gold Concierge · ทัก LINE ให้ช่วยเลือก Seiko</option>
+      <option value="outline">02 — Direct Outline · เช็กเรือนพร้อมขายทาง LINE</option>
+      <option value="chat">03 — Chat Bubble · คุยกับ AT TIME ตอนนี้</option>
+    </select></label>
+    <label class="lab-field"><span>4 · คู่สี</span><select id="palette-choice" aria-label="เลือกคู่สี">
+      <option value="black-gold">01 — Midnight & Champagne Gold</option>
+      <option value="sage">02 — Ivory & Forest Green</option>
+      <option value="plum">03 — Plum & Rose Gold</option>
+    </select></label>
+    <div class="lab-foot">เลือกผสมข้ามหมวดได้ · เปลี่ยนทันที · เป้าหมาย CTA ยังคงไป LINE</div>
+  </aside>
+  <button class="lab-show" id="show-lab" type="button" aria-expanded="false" aria-controls="design-lab" hidden>แสดง Design Lab</button>
+  <script>
+    // Read-only public feed; the back-office remains the single source of truth.
+    const AT_TIME_STOCK_FEED_URL = 'https://script.google.com/macros/s/AKfycbxD6VQSjt7dDWZlKiaBv3abniQOImfaHg8nZq6QC4epQfnBMRL3MLtF076XZNIBTX8rPw/exec';
+    const ATTimeStock = {
+      receiveStock(data) {
+        const grid = document.getElementById('stock-grid');
+        const status = document.getElementById('stock-status');
+        if (!data || !data.ok || !Array.isArray(data.items)) {
+          status.innerHTML = 'สถานะคลังสินค้า: <strong>ดึงข้อมูลไม่สำเร็จ · กรุณาทัก LINE</strong>';
+          grid.innerHTML = '<p class="detail-note">ยังโหลดรายการพร้อมขายไม่ได้ โปรดทัก LINE เพื่อเช็กสต็อกล่าสุด</p>';
+          return;
+        }
+        grid.replaceChildren();
+        data.items.forEach(item => {
+          if (!item || !item.name || !item.sku) return;
+          const card = document.createElement('article'); card.className = 'product';
+          const photo = document.createElement('div'); photo.className = 'product-photo';
+          const image = document.createElement('img'); image.alt = 'ภาพนาฬิกา ' + item.name; image.loading = 'lazy';
+          image.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><rect width="100%" height="100%" fill="#e7e4dc"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#6b6b65" font-family="sans-serif" font-size="22">AT TIME</text></svg>');
+          photo.append(image);
+          const badge = document.createElement('span'); badge.className = 'status'; badge.textContent = 'พร้อมขาย'; photo.append(badge);
+          const info = document.createElement('div'); info.className = 'product-info';
+          const type = document.createElement('span'); type.className = 'product-type'; type.textContent = 'Seiko · พร้อมขาย';
+          const title = document.createElement('h3'); title.textContent = item.name;
+          const desc = document.createElement('p'); desc.textContent = item.sku;
+          const foot = document.createElement('div'); foot.className = 'product-foot';
+          const price = document.createElement('span'); price.className = 'price-later';
+          price.textContent = Number.isFinite(Number(item.salePrice)) && Number(item.salePrice) > 0
+            ? new Intl.NumberFormat('th-TH', { style:'currency', currency:'THB', maximumFractionDigits:0 }).format(Number(item.salePrice))
+            : 'สอบถามราคา';
+          const link = document.createElement('a'); link.className = 'text-link'; link.dataset.primaryCta = ''; link.href = 'https://lin.ee/wnW7Nk5'; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'ถามรุ่นนี้ ↗';
+          foot.append(price, link); info.append(type, title, desc, foot); card.append(photo, info); grid.append(card);
+          if (item.hasPhoto && item.key) requestPhoto(item.key, image);
+        });
+        status.innerHTML = 'สถานะคลังสินค้า: <strong>อัปเดตแล้ว · ' + grid.childElementCount + ' เรือนพร้อมขาย</strong>';
+        if (!grid.childElementCount) grid.innerHTML = '<p class="detail-note">ขณะนี้ไม่พบรายการที่พร้อมขาย กรุณาทัก LINE เพื่อสอบถาม</p>';
+      },
+      receivePhoto(data) {
+        const image = this.pending[data && data.requestId];
+        if (image && data && data.ok && data.dataUrl) image.src = data.dataUrl;
+        if (data && data.requestId) delete this.pending[data.requestId];
+      },
+      pending: Object.create(null)
+    };
+    let feedQueue = Promise.resolve();
+    function jsonp(url, callbackName, params, timeoutMs = 20000) {
+      const run = () => new Promise((resolve, reject) => {
+        const callback = 'ATTimeStock.' + callbackName;
+        const script = document.createElement('script');
+        const query = new URLSearchParams({ ...params, callback });
+        let done = false;
+        const original = ATTimeStock[callbackName];
+        const finish = error => { if (done) return; done = true; clearTimeout(timer); script.remove(); ATTimeStock[callbackName] = original; error ? reject(error) : resolve(); };
+        const timer = setTimeout(() => finish(new Error('feed_timeout')), timeoutMs);
+        ATTimeStock[callbackName] = data => { try { original.call(ATTimeStock, data); finish(); } catch (error) { finish(error); } };
+        script.onerror = () => finish(new Error('feed_error'));
+        script.src = url + (url.includes('?') ? '&' : '?') + query.toString();
+        document.head.append(script);
+      });
+      const result = feedQueue.then(run, run); feedQueue = result.catch(() => {}); return result;
+    }
+    function requestPhoto(key, image) {
+      const requestId = 'p' + Math.random().toString(36).slice(2);
+      ATTimeStock.pending[requestId] = image;
+      jsonp(AT_TIME_STOCK_FEED_URL, 'receivePhoto', { key, request: requestId }).catch(() => { delete ATTimeStock.pending[requestId]; });
+    }
+    const refreshStock = () => jsonp(AT_TIME_STOCK_FEED_URL, 'receiveStock', {}).catch(() => {
+      document.getElementById('stock-status').innerHTML = 'สถานะคลังสินค้า: <strong>เชื่อมต่อไม่ได้ · กรุณาทัก LINE</strong>';
+      document.getElementById('stock-grid').innerHTML = '<p class="detail-note">ยังโหลดรายการพร้อมขายไม่ได้ โปรดทัก LINE เพื่อเช็กสต็อกล่าสุด</p>';
+    });
+    refreshStock();
+    setInterval(refreshStock, 60000);
+  </script>
+  <script>
+    (() => {
+      const body = document.body;
+      const lab = document.getElementById('design-lab');
+      const hide = document.getElementById('hide-lab');
+      const show = document.getElementById('show-lab');
+      const choices = {
+        font: document.getElementById('font-choice'),
+        hero: document.getElementById('hero-choice'),
+        cta: document.getElementById('cta-choice'),
+        palette: document.getElementById('palette-choice')
+      };
+      const ctaCopy = {
+        gold: 'ทัก LINE ให้ช่วยเลือก Seiko ↗',
+        outline: 'เช็กเรือนพร้อมขายทาง LINE ↗',
+        chat: 'คุยกับ AT TIME ตอนนี้ ↗'
+      };
+      Object.entries(choices).forEach(([key, select]) => {
+        select.addEventListener('change', () => {
+          const value = select.value;
+          if (key === 'font') body.dataset.font = value;
+          if (key === 'hero') body.dataset.hero = value;
+          if (key === 'cta') {
+            body.dataset.cta = value;
+            document.querySelectorAll('[data-primary-cta]').forEach(button => {
+              button.textContent = ctaCopy[value];
+            });
+          }
+          if (key === 'palette') body.dataset.palette = value;
+        });
+      });
+      hide.addEventListener('click', () => {
+        lab.hidden = true;
+        show.hidden = false;
+        hide.setAttribute('aria-expanded', 'false');
+        show.setAttribute('aria-expanded', 'true');
+      });
+      show.addEventListener('click', () => {
+        lab.hidden = false;
+        show.hidden = true;
+        hide.setAttribute('aria-expanded', 'true');
+        show.setAttribute('aria-expanded', 'false');
+      });
+    })();
+  </script>
+</body>
+</html>
