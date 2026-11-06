@@ -235,7 +235,7 @@
       body[data-hero="center"] .hero-visual img { height:auto; aspect-ratio:3 / 4; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition-duration: .01ms !important; } }
-  </style>
+  .gallery-nav{position:absolute;inset:auto 12px 12px;display:flex;align-items:center;justify-content:space-between;z-index:3}.gallery-nav button{background:#112d49e8;color:white;border:1px solid #dec180;border-radius:99px;min-width:42px;min-height:42px;cursor:pointer}.gallery-nav span{background:#112d49e8;color:white;border-radius:20px;padding:4px 10px;font-size:12px}</style>
 </head>
 <body data-font="modern" data-hero="split" data-cta="gold" data-palette="black-gold">
   <header>
@@ -306,7 +306,6 @@
           <div class="preview-badge" id="stock-status" role="status" aria-live="polite">สถานะคลังสินค้า: <strong>กำลังโหลดรายการล่าสุด…</strong></div>
         </div>
         <div class="product-grid" id="stock-grid" aria-live="polite"></div>
-        <p class="detail-note" id="stock-note">รายการพร้อมขายและราคาจะแสดงจากข้อมูลสต็อกที่เชื่อมไว้ · สอบถามรายละเอียดทาง LINE</p>
       </div>
     </section>
 
@@ -434,14 +433,14 @@
             : 'สอบถามราคา';
           const link = document.createElement('a'); link.className = 'text-link'; link.dataset.primaryCta = ''; link.href = 'https://lin.ee/wnW7Nk5'; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'ถามรุ่นนี้ ↗';
           foot.append(price, link); info.append(type, title, desc, foot); card.append(photo, info); grid.append(card);
-          if (item.hasPhoto && item.key) requestPhoto(item.key, image);
+          if (item.hasPhoto && item.key) {const count=Number.isInteger(item.photoCount)?Math.min(100,item.photoCount):1;let index=0;const cached={};const display=()=>{image.dataset.photoIndex=String(index);counter.textContent=(index+1)+' / '+count;if(cached[index])image.src=cached[index];else requestPhoto(item.key,image,index,cached)};const nav=document.createElement('div');nav.className='gallery-nav';const prev=document.createElement('button'),next=document.createElement('button'),counter=document.createElement('span');prev.type=next.type='button';prev.textContent='‹';next.textContent='›';prev.setAttribute('aria-label','รูปก่อนหน้า');next.setAttribute('aria-label','รูปถัดไป');prev.addEventListener('click',()=>{index=(index-1+count)%count;display()});next.addEventListener('click',()=>{index=(index+1)%count;display()});nav.append(prev,counter,next);if(count>1)photo.append(nav);display();}
         });
         status.innerHTML = 'สถานะคลังสินค้า: <strong>อัปเดตแล้ว · ' + grid.childElementCount + ' เรือนพร้อมขาย</strong>';
         if (!grid.childElementCount) grid.innerHTML = '<p class="detail-note">ขณะนี้ไม่พบรายการที่พร้อมขาย กรุณาทัก LINE เพื่อสอบถาม</p>';
       },
       receivePhoto(data) {
-        const image = this.pending[data && data.requestId];
-        if (image && data && data.ok && data.dataUrl) image.src = data.dataUrl;
+        const target = this.pending[data && data.requestId];
+        if (target && data && data.ok && data.dataUrl) { target.cache[target.index]=data.dataUrl; if(target.image.dataset.photoIndex===String(target.index))target.image.src=data.dataUrl; }
         if (data && data.requestId) delete this.pending[data.requestId];
       },
       pending: Object.create(null)
@@ -463,10 +462,10 @@
       });
       const result = feedQueue.then(run, run); feedQueue = result.catch(() => {}); return result;
     }
-    function requestPhoto(key, image) {
+    function requestPhoto(key, image, index, cache) {
       const requestId = 'p' + Math.random().toString(36).slice(2);
-      ATTimeStock.pending[requestId] = image;
-      jsonp(AT_TIME_STOCK_FEED_URL, 'receivePhoto', { key, request: requestId }).catch(() => { delete ATTimeStock.pending[requestId]; });
+      image.dataset.photoIndex=String(index); ATTimeStock.pending[requestId] = {image,index,cache};
+      jsonp(AT_TIME_STOCK_FEED_URL, 'receivePhoto', { key, index:String(index), request: requestId }).catch(() => { delete ATTimeStock.pending[requestId]; });
     }
     const refreshStock = () => jsonp(AT_TIME_STOCK_FEED_URL, 'receiveStock', {}).catch(() => {
       document.getElementById('stock-status').innerHTML = 'สถานะคลังสินค้า: <strong>เชื่อมต่อไม่ได้ · กรุณาทัก LINE</strong>';
