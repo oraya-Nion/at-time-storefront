@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111b">
+  <meta name="description" content="ดูรายการนาฬิกา Seiko ที่ AT TIME ยืนยันว่าพร้อมขาย พร้อมสอบถามราคาและรายละเอียดผ่าน LINE">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="preconnect" href="https://script.googleusercontent.com">
+  <title>สต็อก Seiko พร้อมขาย | AT TIME</title>
+  <style>
+    :root{color-scheme:dark;--ink:#f7f5ef;--muted:#b9bdc2;--night:#07111c;--gold:#d7b36c;--gold-bright:#f1d393;--line:rgba(215,179,108,.24);--green:#14b85a;--sans:"Noto Sans Thai","Leelawadee UI",Tahoma,Arial,sans-serif;--max:1180px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);color:var(--ink);font-family:var(--sans);line-height:1.65}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(7,17,28,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:42px;aspect-ratio:1;border:1px solid var(--gold);border-radius:50%;color:var(--gold-bright);font:700 12px Georgia,serif;line-height:1.05;text-align:center}.brand-name{font-size:15px;font-weight:800;letter-spacing:.16em}.brand-sub{display:block;color:var(--muted);font-size:9px;letter-spacing:.14em;margin-top:3px}
+    .btn{min-height:46px;display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:0 20px;border-radius:999px;border:1px solid transparent;font-weight:700;font-size:13px;cursor:pointer}.btn-gold{background:linear-gradient(135deg,#f1d393,#c69d4f);color:#111721}.btn-line{background:var(--green);color:#fff}.btn-outline{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.03);color:var(--ink)}.btn:disabled{opacity:.62;cursor:wait}
+    .inventory{min-height:calc(100vh - 140px);padding:64px 0 88px;background:radial-gradient(ellipse at 50% 0,rgba(43,72,91,.35),transparent 52%),linear-gradient(180deg,#101d29,#09131e)}.section-kicker{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:11px;letter-spacing:.18em;font-weight:800;text-transform:uppercase}.section-kicker::after{content:"";height:1px;width:55px;background:var(--line)}h1{margin:15px 0 12px;font-size:clamp(32px,5vw,54px);line-height:1.2;letter-spacing:-.035em}.intro{max-width:700px;color:var(--muted);font-size:15px;margin-bottom:0}.inventory-head{display:flex;justify-content:space-between;align-items:end;gap:24px}.preview-badge{border:1px solid rgba(241,211,147,.38);background:rgba(215,179,108,.08);color:#f2dcae;padding:10px 13px;border-radius:10px;font-size:11px;max-width:290px}
+    .stock-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:24px 0 30px}.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.product{overflow:hidden;border-radius:16px;background:#111f2c;border:1px solid rgba(255,255,255,.09)}.product-photo{position:relative;overflow:hidden;background:#d8d5cd}.product-photo img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:#e7e4dc}.status{position:absolute;top:14px;left:14px;padding:6px 10px;border-radius:999px;background:rgba(9,17,25,.88);color:#ffe7b6;font-size:10px;border:1px solid rgba(241,211,147,.35)}.product-info{padding:18px 18px 20px}.product-type{color:var(--gold);font-size:10px;letter-spacing:.15em;text-transform:uppercase}.product h3{margin:5px 0 6px;font-size:20px}.product-info>p{color:#aeb7bf;margin:0 0 15px;font-size:12px}.product-info>.photo-more-note{margin:-5px 0 14px;color:#9ba8b2;font-size:11px}.product-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.09);padding-top:14px;gap:10px}.price-later{font-size:12px;color:#d7dadd}.text-link{color:var(--gold-bright);font-size:12px;font-weight:700}.product-details{margin:0 0 14px;border:0;border-top:1px solid rgba(255,255,255,.09)}.product-details summary{padding:11px 0 7px;color:var(--gold-bright);font-size:12px;cursor:pointer}.product-detail-line{margin:7px 0;color:#c3c8cc;font-size:12px;line-height:1.55}.product-detail-line strong{color:var(--gold-bright)}.detail-note{padding:14px 16px;background:#211d13;border-left:2px solid var(--gold);color:#e8d5ab;font-size:12px;border-radius:0 8px 8px 0}.final-cta{padding:46px 0;text-align:center;border-top:1px solid var(--line);background:#09121c}.final-cta p{color:var(--muted)}footer{padding:20px 0;border-top:1px solid rgba(255,255,255,.08);color:#89939c;font-size:11px}.floating-cta{position:fixed;right:18px;bottom:18px;z-index:20;box-shadow:0 12px 32px rgba(0,0,0,.4)}
+    @media(max-width:850px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.inventory-head{display:block}.preview-badge{margin-top:16px;max-width:none}}
+    @media(max-width:560px){.wrap{width:calc(100% - 32px)}.nav{height:64px}.nav>.btn{min-height:40px;padding-inline:13px;font-size:11px}.inventory{padding:48px 0 68px}.product-grid{grid-template-columns:1fr;gap:14px}.product-photo{height:min(82vw,360px);display:grid;place-items:center}.product-photo img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;padding:8px}.stock-actions .btn{width:100%}.floating-cta{right:12px;bottom:12px;min-height:44px;padding-inline:16px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header><nav class="nav wrap" aria-label="เมนูหลัก">
+    <a class="brand" href="index.html" aria-label="AT TIME หน้าแรก"><span class="brand-mark">AT<br>TIME</span><span><span class="brand-name">AT TIME</span><span class="brand-sub">SEIKO PRE-OWNED</span></span></a>
+    <a class="btn btn-line" href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ทัก LINE ↗</a>
+  </nav></header>
+  <main>
+    <section class="inventory" id="inventory" data-stock-eager="true">
+      <div class="wrap">
+        <div class="inventory-head"><div><span class="section-kicker">คลังสินค้าปัจจุบัน</span><h1>Seiko ที่พร้อมขาย</h1><p class="intro">แสดงเฉพาะเรือนที่มีสถานะพร้อมขาย · ราคาและรายละเอียดอาจเปลี่ยน กรุณาสอบถามสถานะล่าสุดก่อนตัดสินใจ</p></div><div class="preview-badge" id="stock-status" role="status" aria-live="polite">กำลังโหลดรายการล่าสุด…</div></div>
+        <div class="stock-actions"><button class="btn btn-gold" id="load-stock" type="button">โหลดรายการอีกครั้ง</button><a class="btn btn-outline" href="index.html">กลับหน้าแรก</a></div>
+        <div class="product-grid" id="stock-grid" aria-live="polite"><p class="detail-note">กำลังเชื่อมต่อรายการพร้อมขาย…</p></div>
+      </div>
+    </section>
+    <section class="final-cta"><div class="wrap"><h2>สนใจเรือนไหน?</h2><p>ทัก AT TIME เพื่อเช็กสถานะ ราคา รายละเอียด และขอภาพมุมอื่นของเรือนที่สนใจ</p><a class="btn btn-line" href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ถามรุ่นหรือขอรูปเพิ่มทาง LINE ↗</a></div></section>
+  </main>
+  <footer><div class="wrap">AT TIME · Seiko มือสอง</div></footer>
+  <a class="btn btn-line floating-cta" href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener" aria-label="ทัก LINE AT TIME">ทัก LINE ↗</a>
+  <script src="stock-client.js" defer></script>
+</body>
+</html>

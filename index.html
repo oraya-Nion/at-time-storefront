@@ -77,6 +77,7 @@
     .inventory-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
     .inventory-head .section-intro { margin-bottom: 0; }
     .preview-badge { border: 1px solid rgba(241,211,147,.38); background: rgba(215,179,108,.08); color: #f2dcae; padding: 10px 13px; border-radius: 10px; font-size: 11px; max-width: 300px; }
+    .stock-actions { display:flex; flex-wrap:wrap; gap:12px; margin:22px 0 16px; }
     .product-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
     .product { overflow: hidden; border-radius: 16px; background: #111f2c; border: 1px solid rgba(255,255,255,.09); transition: transform .25s,border-color .25s; }
     .product:hover { transform: translateY(-5px); border-color: rgba(215,179,108,.5); }
@@ -109,6 +110,9 @@
     blockquote footer { color: #9ca7b0; font-size: 11px; }
     .review-caveat { color: #c9b887; font-size: 11px; margin-top: 16px; }
     .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 36px; counter-reset: step; }
+    .steps-visual { max-width: 1120px; margin: 28px auto 0; overflow: hidden; border: 1px solid rgba(215,179,108,.28); border-radius: 14px; background: #0b1520; }
+    .steps-visual img { display: block; width: 100%; height: auto; }
+    .steps-visual figcaption { padding: 9px 14px; color: #aeb7bf; font-size: 11px; text-align: center; }
     .step { position: relative; padding: 24px; background: #101d29; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; counter-increment: step; }
     .step::before { content: "0" counter(step); display: block; color: var(--gold); font: 22px var(--serif); margin-bottom: 22px; }
     .step h3 { font-size: 15px; margin-bottom: 7px; }
@@ -220,7 +224,8 @@
       .inventory-head { display: block; }
       .preview-badge { margin-top: 18px; max-width: none; }
       .product-grid { grid-template-columns: 1fr; }
-      .product-photo img { height: auto; aspect-ratio: 3 / 4; }
+      .product-photo { height: min(82vw, 360px); display: grid; place-items: center; }
+      .product-photo img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; padding: 8px; }
       .assurance-grid { grid-template-columns: 1fr 1fr; }
       .assurance { min-height: 170px; padding: 20px 16px; }
       .review-grid,.steps { grid-template-columns: 1fr; }
@@ -235,7 +240,17 @@
       body[data-hero="center"] .hero-visual img { height:auto; aspect-ratio:3 / 4; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition-duration: .01ms !important; } }
-  .gallery-nav{position:absolute;inset:auto 12px 12px;display:flex;align-items:center;justify-content:space-between;z-index:3}.gallery-nav button{background:#112d49e8;color:white;border:1px solid #dec180;border-radius:99px;min-width:42px;min-height:42px;cursor:pointer}.gallery-nav span{background:#112d49e8;color:white;border-radius:20px;padding:4px 10px;font-size:12px}</style>
+    /* AT TIME banner: show the complete supplied artwork without cropping or filters. */
+    .hero-grid { min-height: 0; display: flex; flex-direction: column; align-items: stretch; gap: 26px; padding-block: 30px 54px; }
+    .hero-visual { order: 0 !important; align-self: center; justify-self: auto; width: 100% !important; max-width: 1320px; padding: 0; overflow: hidden; border: 1px solid rgba(215,179,108,.62); border-radius: 8px; background: #05080c; box-shadow: 0 24px 70px rgba(0,0,0,.34); transform: none !important; }
+    .hero-visual::before { display: none; }
+    .hero-visual img { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; object-position: center; background: #05080c; }
+    .hero-visual .photo-caption { padding: 10px 14px; background: #080d13; }
+    .hero-grid > div:first-of-type { width: 100%; max-width: 850px; margin-inline: auto; text-align: center; }
+    .hero-grid > div:first-of-type .hero-copy { margin-inline: auto; }
+    .hero-grid > div:first-of-type .hero-actions, .hero-grid > div:first-of-type .hero-meta { justify-content: center; }
+    @media (max-width: 640px) { .hero-grid { gap: 20px; padding-block: 18px 38px; } .hero-visual { width: calc(100% + 32px) !important; max-width: none; border-left: 0; border-right: 0; border-radius: 0; } .hero-visual .photo-caption { padding-inline: 16px; font-size: 9px; } }
+  </style>
 </head>
 <body data-font="modern" data-hero="split" data-cta="gold" data-palette="black-gold">
   <header>
@@ -257,12 +272,16 @@
   <main id="top">
     <section class="hero">
       <div class="hero-grid wrap">
+        <figure class="hero-visual">
+          <img src="at-time-hero-banner.png" alt="แบนเนอร์ AT TIME แสดงนาฬิกา Seiko 3 เรือนบนพื้นหลังสีดำ พร้อมข้อความซื้อ ขาย เทิร์น" fetchpriority="high">
+          <figcaption class="photo-caption"><span>ภาพแนะนำร้าน AT TIME</span><strong>ดูนาฬิกาที่พร้อมขายด้านล่าง</strong></figcaption>
+        </figure>
         <div>
           <span class="eyebrow">AT TIME · SEIKO PRE-OWNED</span>
-          <h1>Seiko มือสอง<br><em>เรือนที่ใช่ รอคุณอยู่</em></h1>
+          <h1>เลือกชม Seiko มือสอง<br><em>ที่พร้อมขาย</em></h1>
           <p class="hero-copy">เลือกชม Seiko มือสองจากรายการที่ร้านยืนยันว่าพร้อมขาย ดูรายละเอียดก่อนตัดสินใจ หรือทักมาถามเรือนที่สนใจได้โดยตรง</p>
           <div class="hero-actions">
-            <a class="btn btn-gold" href="#inventory">เลือกดูนาฬิกา <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-gold" href="#inventory">ดูนาฬิกาพร้อมขาย <span aria-hidden="true">↓</span></a>
             <a class="btn btn-outline" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">เช็กสต็อกทาง LINE ↗</a>
           </div>
           <div class="hero-meta">
@@ -272,10 +291,6 @@
           </div>
           <div class="detail-note">สินค้าแต่ละเรือนมีจำนวนจำกัด กรุณาสอบถามสถานะล่าสุดกับทางร้าน</div>
         </div>
-        <figure class="hero-visual">
-          <img src="watch-cover.jpg" alt="ภาพใกล้หน้าปัด Seiko Prospex PADI จากคลังภาพของ AT TIME" fetchpriority="high">
-          <figcaption class="photo-caption"><span>ภาพนาฬิกาจาก AT TIME</span><strong>สอบถามสถานะกับทางร้าน</strong></figcaption>
-        </figure>
       </div>
     </section>
 
@@ -295,17 +310,17 @@
       </div>
     </section>
 
-    <section class="section inventory" id="inventory">
+    <section class="section inventory" id="inventory" data-stock-mode="background">
       <div class="wrap">
         <div class="inventory-head">
           <div>
-            <span class="section-kicker">คลังสินค้าปัจจุบัน</span>
-            <h2>Seiko ที่พร้อมขาย</h2>
-            <p class="section-intro">แสดงเฉพาะรายการที่คลังสินค้ายืนยันว่าพร้อมขาย · ทัก LINE เพื่อเช็กสถานะและสอบถามราคา</p>
+            <span class="section-kicker">เลือกชมสินค้า</span>
+            <h2>ดู Seiko ที่พร้อมขาย</h2>
+            <p class="section-intro">รายการพร้อมขายจะแสดงที่นี่โดยอัตโนมัติ · แสดงรูปแรกของแต่ละเรือน · ขอรูปเพิ่มเติมทาง LINE ได้</p>
           </div>
-          <div class="preview-badge" id="stock-status" role="status" aria-live="polite">สถานะคลังสินค้า: <strong>กำลังโหลดรายการล่าสุด…</strong></div>
+          <div class="preview-badge" id="stock-status" role="status" aria-live="polite">กำลังโหลดรายการพร้อมขาย…</div>
         </div>
-        <div class="product-grid" id="stock-grid" aria-live="polite"></div>
+        <div class="product-grid" id="stock-grid" aria-live="polite"><p class="detail-note">กำลังเชื่อมต่อรายการสต็อกล่าสุด…</p></div>
       </div>
     </section>
 
@@ -315,9 +330,9 @@
         <h2>ซื้อ ขาย หรือรับเทิร์น Seiko</h2>
         <p class="section-intro">ติดต่อ AT TIME เพื่อสอบถามสินค้าพร้อมขาย รายละเอียดการซื้อขาย หรือบริการรับเทิร์น</p>
         <div class="assurance-grid">
-          <article class="assurance"><span class="symbol">01</span><h3>รับประกันร้าน 6 เดือน</h3><p>สอบถามเงื่อนไขการรับประกันได้กับทางร้าน</p></article>
-          <article class="assurance"><span class="symbol">02</span><h3>รายละเอียดสินค้า</h3><p>สอบถามสภาพและรายละเอียดเรือนที่สนใจเพิ่มเติมได้</p></article>
-          <article class="assurance"><span class="symbol">03</span><h3>เลือกวิธีรับสินค้า</h3><p>สอบถามวิธีรับสินค้าและค่าจัดส่งกับทางร้าน</p></article>
+          <article class="assurance"><span class="symbol">01</span><h3>รับประกันร้าน 6 เดือน</h3><p>นำหรือส่งนาฬิกาให้ร้านตรวจเช็กก่อน ไม่ครอบคลุมกรณีตกหรือกระแทก แกะหรืองัดตัวเรือน หรือน้ำเข้า</p></article>
+          <article class="assurance"><span class="symbol">02</span><h3>แจ้งรายละเอียดตามสภาพ</h3><p>เราจะแจ้งสภาพนาฬิกาให้ทราบก่อนซื้อ อยากรู้เพิ่มตรงไหน ทักมาถามได้เลย</p></article>
+          <article class="assurance"><span class="symbol">03</span><h3>เลือกวิธีรับสินค้า</h3><p>เลือกส่งพัสดุ มารับเอง หรือให้ร้านส่งถึงที่ได้ สอบถามพื้นที่และค่าส่งกับร้านก่อนสั่งซื้อ</p></article>
           <article class="assurance"><span class="symbol">04</span><h3>สอบถามผ่าน LINE</h3><p>รับข้อมูลการชำระเงินจาก LINE OA ของ AT TIME หลังยืนยันรายการ</p></article>
         </div>
       </div>
@@ -329,8 +344,17 @@
         <h2>เสียงตอบรับหลังได้รับนาฬิกา</h2>
         <p class="section-intro">ภาพแคปข้อความรีวิวจากโฟลเดอร์รีวิวลูกค้าของ AT TIME แสดงเป็นภาพต้นฉบับ ไม่ถอดความหรือแต่งข้อความเพิ่ม</p>
         <div class="review-grid">
-          <figure class="review-shot"><img src="review-1.jpg" alt="ภาพแคปบทสนทนาลูกค้าจริง ชื่นชมว่านาฬิกาตัวจริงสวยงามและถูกใจ" loading="lazy"><figcaption>ภาพรีวิวจากไฟล์ของร้าน · บทสนทนาหลังได้รับนาฬิกา</figcaption></figure>
-          <figure class="review-shot"><img src="review-2.jpg" alt="ภาพแคปบทสนทนาลูกค้าจริง แจ้งว่าได้รับนาฬิกาแล้วและชื่นชมว่าสวยมาก" loading="lazy"><figcaption>ภาพรีวิวจากไฟล์ของร้าน · ลูกค้าแจ้งว่าได้รับสินค้าแล้ว</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-01.jpg" alt="ภาพโพสต์รีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-02.jpg" alt="ภาพข้อความรีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-03.jpg" alt="ภาพโพสต์รีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-04.jpg" alt="ภาพโพสต์รีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-05.jpg" alt="ภาพโพสต์รีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-06.jpg" alt="ภาพโพสต์รีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-07.jpg" alt="ภาพโพสต์รีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-08.jpg" alt="ภาพรีวิวจากลูกค้าพร้อมภาพนาฬิกาที่ได้รับ" loading="lazy"><figcaption>รีวิวจากลูกค้าหลังได้รับสินค้า</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-09.jpg" alt="ภาพข้อความรีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-10.jpg" alt="ภาพข้อความรีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
+          <figure class="review-shot"><img src="customer-review-11.jpg" alt="ภาพข้อความรีวิวจากลูกค้าบน Facebook" loading="lazy"><figcaption>รีวิวจากลูกค้าบน Facebook</figcaption></figure>
         </div>
       </div>
     </section>
@@ -339,10 +363,14 @@
       <div class="wrap">
         <span class="section-kicker">เริ่มต้นง่าย ๆ</span>
         <h2>สนใจเรือนไหน ทักมาคุยได้เลย</h2>
+        <figure class="steps-visual">
+          <img src="at-time-purchase-steps.png" alt="ภาพประกอบขั้นตอนเลือกนาฬิกา ตรวจดูนาฬิกา และส่งมอบสินค้า" loading="lazy">
+          <figcaption>ภาพประกอบขั้นตอนเลือกนาฬิกา ตรวจดู และรับสินค้า</figcaption>
+        </figure>
         <div class="steps">
-          <article class="step"><h3>เลือกรุ่นที่สนใจ</h3><p>ส่งรหัสรุ่นหรือภาพหน้าจอของนาฬิกาที่ต้องการถาม</p></article>
-          <article class="step"><h3>เช็กสต็อกและรายละเอียด</h3><p>ให้ AT TIME ยืนยันสถานะ ราคา และข้อมูลล่าสุดก่อนตัดสินใจ</p></article>
-          <article class="step"><h3>เลือกรับสินค้าและชำระเงิน</h3><p>รับรายละเอียดวิธีชำระและจัดส่งผ่านช่องทางทางการของร้าน</p></article>
+          <article class="step"><h3>เลือกรุ่นที่สนใจ</h3><p>ส่งชื่อรุ่นหรือรูปนาฬิกาที่สนใจมาให้ร้านดูได้เลย</p></article>
+          <article class="step"><h3>เช็กว่ายังมีไหม</h3><p>ร้านจะเช็กสต็อก แจ้งราคาและรายละเอียดให้ก่อนตัดสินใจ</p></article>
+          <article class="step"><h3>เลือกวิธีรับและชำระเงิน</h3><p>ทัก LINE ร้านเพื่อถามวิธีจ่ายเงินและจัดส่ง แล้วเลือกแบบที่สะดวก</p></article>
         </div>
       </div>
     </section>
@@ -351,8 +379,8 @@
       <div class="faq-grid wrap">
         <div><span class="section-kicker">คำถามที่พบบ่อย</span><h2>ก่อนเลือกซื้อ</h2><p class="section-intro">ยังไม่แน่ใจเรื่องไหน ทัก LINE เพื่อสอบถามข้อมูลล่าสุดจากร้าน</p><a class="btn btn-outline" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener">ถาม AT TIME ↗</a></div>
         <div class="faq-list">
-          <details><summary>รายการที่เห็นยังมีสินค้าอยู่ไหม?</summary><p>ภาพในตัวอย่างนี้มาจากไฟล์เดิมของ Project Seiko ยังไม่ใช่การยืนยันสต็อกปัจจุบัน กรุณาทัก LINE เพื่อเช็กเรือนที่ยังพร้อมขาย</p></details>
-          <details><summary>นาฬิกามีรับประกันไหม?</summary><p>AT TIME รับประกันจากร้าน 6 เดือน สอบถามเงื่อนไขเพิ่มเติมกับทางร้านได้ค่ะ</p></details>
+          <details><summary>รายการที่เห็นยังมีสินค้าอยู่ไหม?</summary><p>รูปที่เห็นเป็นภาพตัวอย่าง สินค้าอาจขายไปแล้ว ทัก LINE เพื่อเช็กว่ายังมีเรือนที่สนใจอยู่ไหม</p></details>
+          <details><summary>นาฬิกามีรับประกันไหม?</summary><p>AT TIME รับประกันจากร้าน 6 เดือน หากต้องการใช้สิทธิ์รับประกัน ให้นำหรือส่งนาฬิกาให้ทางร้านตรวจเช็กก่อนทุกครั้ง การรับประกันไม่ครอบคลุมความเสียหายจากการตกหรือกระแทก การแกะหรืองัดตัวเรือน และกรณีน้ำเข้า</p></details>
           <details><summary>ขอภาพหรือข้อมูลเพิ่มได้ไหม?</summary><p>สอบถามรายละเอียดเรือนที่สนใจผ่าน LINE ได้</p></details>
           <details><summary>รับสินค้าได้อย่างไร?</summary><p>สอบถามช่องทางรับสินค้า พื้นที่จัดส่ง และค่าใช้จ่ายกับทางร้านได้</p></details>
           <details><summary>ชำระเงินอย่างไร?</summary><p>ขอรายละเอียดชำระเงินจาก LINE OA ของ AT TIME หลังยืนยันรายการแล้ว ไม่ใช้ข้อมูลบัญชีจากโพสต์เก่า</p></details>
@@ -373,6 +401,18 @@
   </main>
   <footer class="footer"><div class="footer-inner wrap"><span>AT TIME · Seiko มือสอง</span></div></footer>
   <a class="btn btn-line floating-cta" data-primary-cta href="https://lin.ee/wnW7Nk5" target="_blank" rel="noopener" aria-label="ทัก LINE AT TIME">ทัก LINE ↗</a>
+  <script>
+    (() => {
+      const loadStockClient = () => {
+        const script = document.createElement('script');
+        script.src = 'stock-client.js';
+        script.async = true;
+        document.head.append(script);
+      };
+      if ('requestIdleCallback' in window) window.requestIdleCallback(loadStockClient, { timeout: 1200 });
+      else window.addEventListener('load', () => window.setTimeout(loadStockClient, 150), { once: true });
+    })();
+  </script>
   <aside class="design-lab" id="design-lab" aria-label="แผงทดลองดีไซน์" hidden>
     <div class="lab-head">
       <div><span class="lab-title">✦ DESIGN LAB</span><span class="lab-subtitle">เครื่องมือทดลอง · ไม่ใช่เนื้อหาสำหรับลูกค้า</span></div>
@@ -401,79 +441,6 @@
     <div class="lab-foot">เลือกผสมข้ามหมวดได้ · เปลี่ยนทันที · เป้าหมาย CTA ยังคงไป LINE</div>
   </aside>
   <button class="lab-show" id="show-lab" type="button" aria-expanded="false" aria-controls="design-lab" hidden>แสดง Design Lab</button>
-  <script>
-    // Read-only public feed; the back-office remains the single source of truth.
-    const AT_TIME_STOCK_FEED_URL = 'https://script.google.com/macros/s/AKfycbxD6VQSjt7dDWZlKiaBv3abniQOImfaHg8nZq6QC4epQfnBMRL3MLtF076XZNIBTX8rPw/exec';
-    const ATTimeStock = {
-      receiveStock(data) {
-        const grid = document.getElementById('stock-grid');
-        const status = document.getElementById('stock-status');
-        if (!data || !data.ok || !Array.isArray(data.items)) {
-          status.innerHTML = 'สถานะคลังสินค้า: <strong>ดึงข้อมูลไม่สำเร็จ · กรุณาทัก LINE</strong>';
-          grid.innerHTML = '<p class="detail-note">ยังโหลดรายการพร้อมขายไม่ได้ โปรดทัก LINE เพื่อเช็กสต็อกล่าสุด</p>';
-          return;
-        }
-        grid.replaceChildren();
-        data.items.forEach(item => {
-          if (!item || !item.name || !item.sku) return;
-          const card = document.createElement('article'); card.className = 'product';
-          const photo = document.createElement('div'); photo.className = 'product-photo';
-          const image = document.createElement('img'); image.alt = 'ภาพนาฬิกา ' + item.name; image.loading = 'lazy';
-          image.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><rect width="100%" height="100%" fill="#e7e4dc"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#6b6b65" font-family="sans-serif" font-size="22">AT TIME</text></svg>');
-          photo.append(image);
-          const badge = document.createElement('span'); badge.className = 'status'; badge.textContent = 'พร้อมขาย'; photo.append(badge);
-          const info = document.createElement('div'); info.className = 'product-info';
-          const type = document.createElement('span'); type.className = 'product-type'; type.textContent = 'Seiko · พร้อมขาย';
-          const title = document.createElement('h3'); title.textContent = item.name;
-          const desc = document.createElement('p'); desc.textContent = item.sku;
-          const foot = document.createElement('div'); foot.className = 'product-foot';
-          const price = document.createElement('span'); price.className = 'price-later';
-          price.textContent = Number.isFinite(Number(item.salePrice)) && Number(item.salePrice) > 0
-            ? new Intl.NumberFormat('th-TH', { style:'currency', currency:'THB', maximumFractionDigits:0 }).format(Number(item.salePrice))
-            : 'สอบถามราคา';
-          const link = document.createElement('a'); link.className = 'text-link'; link.dataset.primaryCta = ''; link.href = 'https://lin.ee/wnW7Nk5'; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'ถามรุ่นนี้ ↗';
-          foot.append(price, link); info.append(type, title, desc, foot); card.append(photo, info); grid.append(card);
-          if (item.hasPhoto && item.key) {const count=Number.isInteger(item.photoCount)?Math.min(100,item.photoCount):1;let index=0;const cached={};const display=()=>{image.dataset.photoIndex=String(index);counter.textContent=(index+1)+' / '+count;if(cached[index])image.src=cached[index];else requestPhoto(item.key,image,index,cached)};const nav=document.createElement('div');nav.className='gallery-nav';const prev=document.createElement('button'),next=document.createElement('button'),counter=document.createElement('span');prev.type=next.type='button';prev.textContent='‹';next.textContent='›';prev.setAttribute('aria-label','รูปก่อนหน้า');next.setAttribute('aria-label','รูปถัดไป');prev.addEventListener('click',()=>{index=(index-1+count)%count;display()});next.addEventListener('click',()=>{index=(index+1)%count;display()});nav.append(prev,counter,next);if(count>1)photo.append(nav);display();}
-        });
-        status.innerHTML = 'สถานะคลังสินค้า: <strong>อัปเดตแล้ว · ' + grid.childElementCount + ' เรือนพร้อมขาย</strong>';
-        if (!grid.childElementCount) grid.innerHTML = '<p class="detail-note">ขณะนี้ไม่พบรายการที่พร้อมขาย กรุณาทัก LINE เพื่อสอบถาม</p>';
-      },
-      receivePhoto(data) {
-        const target = this.pending[data && data.requestId];
-        if (target && data && data.ok && data.dataUrl) { target.cache[target.index]=data.dataUrl; if(target.image.dataset.photoIndex===String(target.index))target.image.src=data.dataUrl; }
-        if (data && data.requestId) delete this.pending[data.requestId];
-      },
-      pending: Object.create(null)
-    };
-    let feedQueue = Promise.resolve();
-    function jsonp(url, callbackName, params, timeoutMs = 20000) {
-      const run = () => new Promise((resolve, reject) => {
-        const callback = 'ATTimeStock.' + callbackName;
-        const script = document.createElement('script');
-        const query = new URLSearchParams({ ...params, callback });
-        let done = false;
-        const original = ATTimeStock[callbackName];
-        const finish = error => { if (done) return; done = true; clearTimeout(timer); script.remove(); ATTimeStock[callbackName] = original; error ? reject(error) : resolve(); };
-        const timer = setTimeout(() => finish(new Error('feed_timeout')), timeoutMs);
-        ATTimeStock[callbackName] = data => { try { original.call(ATTimeStock, data); finish(); } catch (error) { finish(error); } };
-        script.onerror = () => finish(new Error('feed_error'));
-        script.src = url + (url.includes('?') ? '&' : '?') + query.toString();
-        document.head.append(script);
-      });
-      const result = feedQueue.then(run, run); feedQueue = result.catch(() => {}); return result;
-    }
-    function requestPhoto(key, image, index, cache) {
-      const requestId = 'p' + Math.random().toString(36).slice(2);
-      image.dataset.photoIndex=String(index); ATTimeStock.pending[requestId] = {image,index,cache};
-      jsonp(AT_TIME_STOCK_FEED_URL, 'receivePhoto', { key, index:String(index), request: requestId }).catch(() => { delete ATTimeStock.pending[requestId]; });
-    }
-    const refreshStock = () => jsonp(AT_TIME_STOCK_FEED_URL, 'receiveStock', {}).catch(() => {
-      document.getElementById('stock-status').innerHTML = 'สถานะคลังสินค้า: <strong>เชื่อมต่อไม่ได้ · กรุณาทัก LINE</strong>';
-      document.getElementById('stock-grid').innerHTML = '<p class="detail-note">ยังโหลดรายการพร้อมขายไม่ได้ โปรดทัก LINE เพื่อเช็กสต็อกล่าสุด</p>';
-    });
-    refreshStock();
-    setInterval(refreshStock, 60000);
-  </script>
   <script>
     (() => {
       const body = document.body;
